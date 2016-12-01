@@ -1,0 +1,11 @@
+*.iml
+**/api-docs
+/data
+**/target/
+**/.classpath
+**/.project
+**/.settings
+**/logs
+**/.idea
+**/bin
+**/build
