@@ -24,13 +24,13 @@ or in Scala code:
     evolver.init(Some("mig_1.0.3"))
 
 You will of course replace 'test' with your keyspace and 'localhost' and 9042 with your Cassandra host and port.
-This will create a table evolver_log that will make this keyspace look like it was evolved at version 'mig_1.0.3'.
-No other cql statements are run, your schema remains the same.
+This will create a table evolver_log that will make this keyspace look like it was evolved to version 'mig_1.0.3'.
+No other cql statements are run, the rest of your schema remains unaltered.
 
 ### Evolve
 
-Later on, your keyspace needs to evolve to version 1.0.4.
-You have a .cql file in your migration scripts folder which with the name 'mig_1.0.4.cql'
+Later on, your keyspace needs to evolve to version mig_1.0.4.
+You need a .cql file in your with the name 'mig_1.0.4.cql' in your cql folder.
 
     java -jar evolver.Evolver evolve -h localhost -p 9042 -k test -f <cql_folder>
 
