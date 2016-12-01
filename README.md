@@ -8,9 +8,9 @@ Usage
 
 Evolver uses cql scripts to run the migration. Conventions:
 - all migration files should have the .cql extension
-- the name of the .cql file represents the version the keyspace will get to after running this migration.
+- the name of the .cql file represents the new version name.
 - hence the lexicographical order of the file names is also the order of the versions
-- contain as many cql statements as you want per file
+- cql files can contain as many cql statements as you want per file, each statement should end in ';'
 
 ### Init
 
