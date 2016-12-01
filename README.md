@@ -21,7 +21,7 @@ Let's say you have an existing Cassandra keyspace which you've been migrating ma
 or in Scala code:
 
     val evolver = new Evolver("localhost", 9042, "test")
-    evolver.init(Some("mig_1.0.3"))
+    try  evolver.init(Some("mig_1.0.3")) finally evolver.stop()
 
 You will of course replace 'test' with your keyspace and 'localhost' and 9042 with your Cassandra host and port.
 This will create a table evolver_log that will make this keyspace look like it was evolved to version 'mig_1.0.3'.
@@ -30,14 +30,14 @@ No other cql statements are run, the rest of your schema remains unaltered.
 ### Evolve
 
 Later on, your keyspace needs to evolve to version mig_1.0.4.
-You need a .cql file in your with the name 'mig_1.0.4.cql' in your cql folder.
+You need a .cql file named 'mig_1.0.4.cql' in your cql folder.
 
     java -jar evolver.Evolver evolve -h localhost -p 9042 -k test -f <cql_folder>
 
 or in Scala code:
 
     val evolver = new Evolver("localhost", 9042, "test")
-    evolver.evolve(new File ("./cqls"))
+    try evolver.evolve(new File ("./cqls")) finally evolver.stop()
 
 Boom. You're done. Use it in your tests.
 
