@@ -92,7 +92,7 @@ class Evolver(host: String, port: Int, keyspace: String) extends LazyLogging {
 
     cqlFiles.foreach { f =>
       logger.info(s"Evolving to version ${f.getName.stripCqlSuffix}")
-      readCqlStmts(Source.fromFile(f)).foreach(session.execute)
+      readCqlStmts(Source.fromFile(f)).filter(_.trim.length>0).foreach(session.execute)
       session.execute(insertIntoEvolverLog.bind(f.getName.stripCqlSuffix))
     }
 
